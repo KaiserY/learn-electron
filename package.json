@@ -1,0 +1,23 @@
+{
+    "scripts": {
+        "start": "electron app/src/main.js",
+        "postinstall": "install-app-deps",
+        "pack": "build",
+        "dist": "build"
+    },
+    "build": {
+        "download": {
+            "mirror": "https://npm.taobao.org/mirrors/electron/",
+            "strictSSL": false
+        },
+        "linux": {
+            "target": "rpm",
+            "depends": []
+        }
+    },
+    "devDependencies": {
+        "devtron": "^1.1.2",
+        "electron-builder": "^3.26.2",
+        "electron-prebuilt": "^1.1.1"
+    }
+}

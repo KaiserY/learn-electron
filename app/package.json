@@ -1,0 +1,19 @@
+{
+    "name": "learn-electron",
+    "version": "1.0.0",
+    "description": "A minimal Electron application",
+    "main": "src/main.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/KaiserY/learn-electron.git"
+    },
+    "keywords": [
+        "Electron"
+    ],
+    "author": "KaiserY <yueyang.fanqiang@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/KaiserY/learn-electron/issues"
+    },
+    "homepage": "https://github.com/KaiserY/learn-electron#readme"
+}
