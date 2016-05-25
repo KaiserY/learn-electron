@@ -2,11 +2,25 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 import * as fs from 'fs'
+import * as os from 'os'
 var sudo = require('electron-sudo')
 
-fs.readFile('/etc/hosts', 'utf-8', (err, data) => {
+let hostsPath: string = '/etc/hosts'
+
+process.noAsar = true
+
+switch (os.platform()) {
+    case 'win32':
+        hostsPath = 'C:/Windows/System32/drivers/etc/hosts'
+        break
+    case 'linux':
+        hostsPath = '/etc/hosts'
+        break
+}
+
+fs.readFile(hostsPath, 'utf-8', (err, data) => {
     if (err) {
-        console.log('error: ' + err)
+        console.error('error: ' + err)
     } else {
         document.getElementById('hosts-text').innerHTML = data
     }
