@@ -1,39 +1,43 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "isolatedModules": false,
-        "jsx": "react",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "declaration": false,
-        "noImplicitAny": false,
-        "noImplicitUseStrict": false,
-        "removeComments": true,
-        "noLib": false,
-        "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": true,
-        "outDir": "app/out",
-        "newLine": "LF",
-        "inlineSources": true,
-        "sourceMap": true
-    },
-    "filesGlob": [
-        "src/*.ts",
-        "typings/**/*.d.ts"
-    ],
-    "exclude": [
-        "node_modules",
-        "typings/browser",
-        "typings/browser.d.ts"
-    ],
-    "compileOnSave": false,
-    "buildOnSave": false,
-    "atom": {
-        "rewriteTsconfig": true
-    },
-    "files": [
-        "src/main.ts"
-    ]
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "isolatedModules": false,
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": false,
+    "noImplicitAny": false,
+    "noImplicitUseStrict": false,
+    "removeComments": true,
+    "noLib": false,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "outDir": "app/out",
+    "newLine": "LF",
+    "inlineSources": true,
+    "sourceMap": true
+  },
+  "filesGlob": [
+    "src/*.ts",
+    "typings/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "typings/browser",
+    "typings/browser.d.ts"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": {
+    "rewriteTsconfig": true
+  },
+  "files": [
+    "src/main.ts",
+    "src/renderer.ts",
+    "typings/globals/github-electron/index.d.ts",
+    "typings/globals/node/index.d.ts",
+    "typings/index.d.ts"
+  ]
 }

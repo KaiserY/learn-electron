@@ -1,26 +1,33 @@
 {
-    "scripts": {
-        "start": "electron app/src/main.js",
-        "postinstall": "install-app-deps",
-        "pack": "build",
-        "dist": "build"
+  "scripts": {
+    "start": "npm run compile && electron ./app",
+    "postinstall": "install-app-deps",
+    "clean": "rimraf dist && rimraf app/out",
+    "pre-compile": "cpr src/*.html app/out",
+    "compile": "npm run clean && npm run pre-compile && tsconfig -i 2 && tsc",
+    "pack": "npm run compile && build",
+    "dist": "npm run compile && build"
+  },
+  "build": {
+    "download": {
+      "mirror": "https://npm.taobao.org/mirrors/electron/",
+      "strictSSL": false
     },
-    "build": {
-        "download": {
-            "mirror": "https://npm.taobao.org/mirrors/electron/",
-            "strictSSL": false
-        },
-        "linux": {
-            "target": "rpm",
-            "depends": []
-        },
-        "win": {
-            "msi": false
-        }
+    "linux": {
+      "target": "rpm",
+      "depends": []
     },
-    "devDependencies": {
-        "devtron": "^1.1.2",
-        "electron-builder": "^3.26.2",
-        "electron-prebuilt": "^1.1.1"
+    "win": {
+      "msi": false
     }
+  },
+  "devDependencies": {
+    "cpr": "^1.1.1",
+    "devtron": "^1.1.2",
+    "electron-builder": "^3.26.2",
+    "electron-prebuilt": "^1.1.1",
+    "rimraf": "^2.5.2",
+    "tsconfig-glob": "^0.4.3",
+    "typescript": "^1.8.10"
+  }
 }
