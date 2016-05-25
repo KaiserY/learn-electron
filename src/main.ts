@@ -15,7 +15,7 @@ function createWindow() {
     mainWindow.webContents.openDevTools()
 
     mainWindow.webContents.on('crashed', () => {
-
+        console.log("window crashed");
     })
 
     // Emitted when the window is closed.
@@ -27,7 +27,7 @@ function createWindow() {
     })
 
     mainWindow.on('unresponsive', () => {
-
+        console.log("window unresponsive");
     })
 }
 
