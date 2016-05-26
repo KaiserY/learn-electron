@@ -4,11 +4,12 @@
     "postinstall": "install-app-deps",
     "clean:dist": "rimraf dist",
     "clean:public": "rimraf app/public",
-    "compile": "npm run clean:public && tsconfig -i 2 && tsc && webpack",
+    "compile": "npm run clean:public && tsconfig -i 2 && tsc && webpack --progress --display-reasons --display-error-details --display-modules",
     "pack": "npm run compile && build",
     "dist": "npm run compile && build"
   },
   "build": {
+      "asar-unpack-dir": "node_modules/electron-sudo/**/*",
     "prune": true,
     "download": {
       "mirror": "https://npm.taobao.org/mirrors/electron/",
@@ -42,6 +43,7 @@
     "tsconfig-glob": "^0.4.3",
     "typescript": "^1.8.10",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "webpack-node-externals": "^1.2.0"
   }
 }

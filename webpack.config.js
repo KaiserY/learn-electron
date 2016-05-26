@@ -1,11 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     entry: [
         "./src/entry.ts"
     ],
-    target: "electron-renderer",
+    target: "electron",
+    devtool: "source-map",
     output: {
         path: path.join(__dirname, "app/public"),
         filename: "[name].bundle.js"
@@ -29,7 +31,7 @@ module.exports = {
     plugins: [new HtmlWebpackPlugin({
         template: './src/index.html'
     })],
-    externals: {
-        'electron': 'require("electron")'
-    }
+    externals: [nodeExternals({
+        whitelist: ['jquery', /^material-design/]
+    })]
 };
