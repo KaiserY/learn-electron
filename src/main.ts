@@ -6,10 +6,15 @@ let mainWindow: Electron.BrowserWindow = null
 
 function createWindow() {
     // Create the browser window.
-    mainWindow = new BrowserWindow({ width: 800, height: 600 })
+    mainWindow = new BrowserWindow({
+        width: 800,
+        height: 600
+    })
+
+    mainWindow.maximize()
 
     // and load the index.html of the app.
-    mainWindow.loadURL(`file://${__dirname}/../index.html`)
+    mainWindow.loadURL(`file://${__dirname}/index.html`)
 
     // Open the DevTools.
     mainWindow.webContents.openDevTools()
@@ -56,6 +61,6 @@ app.on('activate', function() {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-process.on('uncaughtException', () => {
-    console.log("caught from process");
+process.on('uncaughtException', (ex) => {
+    console.log("caught from process:" + ex);
 });

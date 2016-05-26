@@ -1,22 +1,19 @@
 {
-    "name": "learn-electron",
-    "version": "1.0.1",
-    "description": "A minimal Electron application",
-    "main": "public/out/main.js",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/KaiserY/learn-electron.git"
-    },
-    "keywords": [
-        "Electron"
-    ],
-    "author": "KaiserY <yueyang.fanqiang@gmail.com>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/KaiserY/learn-electron/issues"
-    },
-    "homepage": "https://github.com/KaiserY/learn-electron#readme",
-    "dependencies": {
-      "electron-sudo": "^3.0.5"
-    }
+  "name": "learn-electron",
+  "version": "1.0.1",
+  "description": "A minimal Electron application",
+  "main": "public/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaiserY/learn-electron.git"
+  },
+  "keywords": [
+    "Electron"
+  ],
+  "author": "KaiserY <yueyang.fanqiang@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KaiserY/learn-electron/issues"
+  },
+  "homepage": "https://github.com/KaiserY/learn-electron#readme"
 }

@@ -38,4 +38,4 @@ jspm_packages
 
 #
 dist/
-app/public/out
+app/public/
