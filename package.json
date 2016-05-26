@@ -2,15 +2,14 @@
     "scripts": {
         "start": "npm run compile && electron ./app",
         "postinstall": "install-app-deps",
-        "clean": "rimraf dist && rimraf app/out",
-        "pre-compile": "cpr src/index.html app/out",
-        "compile": "npm run clean && npm run pre-compile && tsconfig -i 2 && tsc",
+        "clean:dist": "rimraf dist",
+        "clean:out": "rimraf app/public/out",
+        "compile": "npm run clean:out && tsconfig -i 2 && tsc",
         "pack": "npm run compile && build",
         "dist": "npm run compile && build"
     },
     "build": {
         "prune": true,
-        "asar-unpack-dir": "node_modules/electron-sudo/**/*",
         "download": {
             "mirror": "https://npm.taobao.org/mirrors/electron/",
             "strictSSL": false
@@ -27,8 +26,7 @@
         "cpr": "^1.1.1",
         "devtron": "^1.1.2",
         "electron-builder": "^3.26.2",
-        "electron-prebuilt": "^1.1.2",
-        "ncp": "^2.0.0",
+        "electron-prebuilt": "^1.1.3",
         "rimraf": "^2.5.2",
         "tsconfig-glob": "^0.4.3",
         "typescript": "^1.8.10"

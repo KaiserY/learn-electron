@@ -2,7 +2,7 @@
     "name": "learn-electron",
     "version": "1.0.1",
     "description": "A minimal Electron application",
-    "main": "out/main.js",
+    "main": "public/out/main.js",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/KaiserY/learn-electron.git"

@@ -14,7 +14,7 @@
     "noLib": false,
     "preserveConstEnums": true,
     "suppressImplicitAnyIndexErrors": true,
-    "outDir": "app/out",
+    "outDir": "app/public/out",
     "newLine": "LF",
     "inlineSources": true,
     "sourceMap": true
