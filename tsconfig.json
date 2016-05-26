@@ -16,7 +16,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "outDir": "app/public/",
     "newLine": "LF",
-    "inlineSources": true,
     "sourceMap": true
   },
   "filesGlob": [
@@ -34,6 +33,7 @@
     "rewriteTsconfig": true
   },
   "files": [
+    "src/entry.ts",
     "src/main.ts",
     "src/renderer.ts",
     "typings/globals/github-electron/index.d.ts",
