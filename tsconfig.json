@@ -14,9 +14,12 @@
     "noLib": false,
     "preserveConstEnums": true,
     "suppressImplicitAnyIndexErrors": true,
-    "outDir": "app/public/",
+    "outDir": "app/out",
     "newLine": "LF",
     "sourceMap": true
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "resolveGlobs": false
   },
   "filesGlob": [
     "src/*.ts",
@@ -30,7 +33,7 @@
   "compileOnSave": false,
   "buildOnSave": false,
   "atom": {
-    "rewriteTsconfig": true
+    "rewriteTsconfig": false
   },
   "files": [
     "typings/globals/github-electron/index.d.ts",

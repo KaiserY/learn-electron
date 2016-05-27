@@ -8,8 +8,6 @@ var sudo = require('electron-sudo')
 
 let hostsPath: string = '/etc/hosts'
 
-process.noAsar = true
-
 switch (os.platform()) {
     case 'win32':
         hostsPath = 'C:/Windows/System32/drivers/etc/hosts'
