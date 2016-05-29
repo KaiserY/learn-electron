@@ -25,14 +25,14 @@ fs.readFile(hostsPath, 'utf-8', (err, data) => {
     }
 })
 
-var options = {
-    name: 'test'
-}
-
-sudo.exec('echo hello', options, (error) => {
-    if (error) {
-        console.error('sudo error: ' + error)
-    } else {
-        console.log('sudo done!')
-    }
-})
+// var options = {
+//     name: 'test'
+// }
+//
+// sudo.exec('echo hello', options, (error) => {
+//     if (error) {
+//         console.error('sudo error: ' + error)
+//     } else {
+//         console.log('sudo done!')
+//     }
+// })

@@ -4,10 +4,9 @@ const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   entry: {
-    index: "./src/entry.ts",
-    main: "./src/main.ts"
+    index: "./src/entry.ts"
   },
-  target: "electron-renderer",
+  target: "electron",
   devtool: "source-map",
   output: {
     path: path.join(__dirname, "app/public"),
