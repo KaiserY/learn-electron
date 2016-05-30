@@ -34,7 +34,11 @@ module.exports = {
   })],
   externals: [
     nodeExternals({
-      whitelist: ["jquery", /^material-design/]
+      whitelist: [
+        "jquery",
+        /^material-design/,
+        "codemirror"
+      ]
     })
   ]
 };

@@ -5,6 +5,7 @@
 import * as fs from 'fs';
 import * as os from 'os';
 import * as CodeMirror from 'codemirror'
+import * as $ from 'jquery'
 var sudo = require('electron-sudo');
 
 let hostsPath: string = '/etc/hosts';
@@ -17,6 +18,8 @@ switch (os.platform()) {
     hostsPath = '/etc/hosts';
     break;
 };
+
+$('#app-card-title').text(hostsPath);
 
 let textarea = <HTMLTextAreaElement>document.getElementById("app-editor");
 let appCodeMirror: CodeMirror.EditorFromTextArea = null;
@@ -31,7 +34,8 @@ fs.readFile(hostsPath, 'utf-8', (err, data) => {
     textarea.innerText = text;
   };
   appCodeMirror = CodeMirror.fromTextArea(textarea, {
-    mode: "Perl",
+    value: "function myScript(){return 100;}\n",
+    mode: "perl",
     lineNumbers: true
   });
 });

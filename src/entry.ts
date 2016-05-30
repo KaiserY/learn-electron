@@ -1,14 +1,13 @@
-require("../node_modules/material-design-lite/material.min.js");
-require("../node_modules/jquery/dist/jquery.js");
+import "../node_modules/material-design-lite/material.min.js";
+import "../node_modules/jquery/dist/jquery.js";
 
-require("./renderer.ts");
+import "./renderer.ts";
 
-require("../node_modules/material-design-icons/iconfont/material-icons.css");
-require("./roboto.css");
-require("./vendor/material.min.css");
+import "../node_modules/material-design-icons/iconfont/material-icons.css";
+import "./roboto.css";
+import "./vendor/material.min.css";
 
-require("../node_modules/codemirror/lib/codemirror.js");
-require("../node_modules/codemirror/lib/codemirror.css");
-require("../node_modules/codemirror/mode/perl/perl.js");
+import "../node_modules/codemirror/lib/codemirror.css";
+import "../node_modules/codemirror/mode/perl/perl.js";
 
-require("./app.css");
+import "./app.css";
