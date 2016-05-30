@@ -1,5 +1,6 @@
 {
   "globalDependencies": {
+    "codemirror": "registry:dt/codemirror#0.0.0+20160521152226",
     "github-electron": "registry:dt/github-electron#1.0.2+20160523035412",
     "node": "registry:dt/node#6.0.0+20160523035754"
   }
