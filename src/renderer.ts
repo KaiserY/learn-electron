@@ -34,20 +34,23 @@ fs.readFile(hostsPath, 'utf-8', (err, data) => {
     textarea.innerText = text;
   };
   appCodeMirror = CodeMirror.fromTextArea(textarea, {
-    value: "function myScript(){return 100;}\n",
-    mode: "perl",
+    mode: 'perl',
     lineNumbers: true
   });
 });
 
-// var options = {
-//     name: 'test'
-// };
-//
-// sudo.exec('echo hello', options, (error) => {
-//     if (error) {
-//         console.error('sudo error: ' + error)
-//     } else {
-//         console.log('sudo done!')
-//     }
-// });
+let sudoOptions = {
+  name: 'test'
+};
+
+$('#app-card-save').click(() => {
+  var text = appCodeMirror.getDoc().getValue();
+  var cmd = 'bash -c \'echo "' + text + '" | tee ' + hostsPath + '-bak\'';
+  sudo.exec(cmd, sudoOptions, (error) => {
+      if (error) {
+          console.error('sudo error: ' + error)
+      } else {
+          console.log('sudo done!')
+      }
+  });
+});
