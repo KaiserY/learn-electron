@@ -37,6 +37,12 @@ fs.readFile(hostsPath, 'utf-8', (err, data) => {
     mode: 'hosts',
     lineNumbers: true
   });
+
+  appCodeMirror.setOption("extraKeys", {
+    "Ctrl-/": (cm) => {
+      cm.toggleComment();
+    }
+  });
 });
 
 let sudoOptions = {
@@ -47,10 +53,10 @@ $('#app-card-save').click(() => {
   var text = appCodeMirror.getDoc().getValue();
   var cmd = 'bash -c \'echo "' + text + '" | tee ' + hostsPath + '-bak\'';
   sudo.exec(cmd, sudoOptions, (error) => {
-      if (error) {
-          console.error('sudo error: ' + error)
-      } else {
-          console.log('sudo done!')
-      }
+    if (error) {
+      console.error('sudo error: ' + error)
+    } else {
+      console.log('sudo done!')
+    }
   });
 });
