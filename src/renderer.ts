@@ -34,7 +34,7 @@ fs.readFile(hostsPath, 'utf-8', (err, data) => {
     textarea.innerText = text;
   };
   appCodeMirror = CodeMirror.fromTextArea(textarea, {
-    mode: 'perl',
+    mode: 'hosts',
     lineNumbers: true
   });
 });

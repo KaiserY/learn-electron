@@ -9,5 +9,6 @@ import "./vendor/material.min.css";
 
 import "../node_modules/codemirror/lib/codemirror.css";
 import "../node_modules/codemirror/mode/perl/perl.js";
+import "./js/codemirror-mode-hosts.js";
 
 import "./app.css";
