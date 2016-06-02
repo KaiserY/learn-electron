@@ -6,13 +6,14 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as CodeMirror from 'codemirror'
 import * as $ from 'jquery'
+
 var sudo = require('electron-sudo');
 
 let hostsPath: string = '/etc/hosts';
 
 switch (os.platform()) {
   case 'win32':
-    hostsPath = 'C:/Windows/System32/drivers/etc/hosts';
+    hostsPath = process.env.WINDIR + '\\System32\\drivers\\etc\\hosts';
     break;
   case 'linux':
     hostsPath = '/etc/hosts';
@@ -64,6 +65,21 @@ $('#app-card-save').click(() => {
 function saveHosts(hostsContent) {
   switch (os.platform()) {
     case 'win32':
+      var tmpFile = process.env.temp + '\\tmp-hosts';
+      fs.writeFile(tmpFile, hostsContent, (error) => {
+        if (error) {
+          console.error('sudo error: ' + error);
+        } else {
+          var cmd = 'xcopy /s /y ' + tmpFile + ' ' + hostsPath;
+          sudo.exec(cmd, sudoOptions, (error) => {
+            if (error) {
+              console.error('sudo error: ' + error);
+            } else {
+              console.log('sudo done!');
+            }
+          });
+        }
+      });
       break;
     case 'linux':
       var cmd = 'bash -c \'echo "' + hostsContent + '" | tee ' + hostsPath + '\'';
