@@ -31,16 +31,23 @@ fs.readFile(hostsPath, 'utf-8', (err, data) => {
     console.error(text);
   } else {
     text = data;
-    textarea.innerText = text;
   };
+
   appCodeMirror = CodeMirror.fromTextArea(textarea, {
     mode: 'hosts',
-    lineNumbers: true
+    lineNumbers: true,
+    tabSize: 8
   });
+
+  appCodeMirror.setValue(text);
+  appCodeMirror.getDoc().clearHistory();
 
   appCodeMirror.setOption("extraKeys", {
     "Ctrl-/": (cm) => {
       cm.toggleComment();
+    },
+    "Ctrl-S": (cm) => {
+      saveHosts(cm.getValue());
     }
   });
 });
@@ -50,13 +57,23 @@ let sudoOptions = {
 };
 
 $('#app-card-save').click(() => {
-  var text = appCodeMirror.getDoc().getValue();
-  var cmd = 'bash -c \'echo "' + text + '" | tee ' + hostsPath + '-bak\'';
-  sudo.exec(cmd, sudoOptions, (error) => {
-    if (error) {
-      console.error('sudo error: ' + error)
-    } else {
-      console.log('sudo done!')
-    }
-  });
+  var text = appCodeMirror.getValue();
+  saveHosts(text);
 });
+
+function saveHosts(hostsContent) {
+  switch (os.platform()) {
+    case 'win32':
+      break;
+    case 'linux':
+      var cmd = 'bash -c \'echo "' + hostsContent + '" | tee ' + hostsPath + '\'';
+      sudo.exec(cmd, sudoOptions, (error) => {
+        if (error) {
+          console.error('sudo error: ' + error);
+        } else {
+          console.log('sudo done!');
+        }
+      });
+      break;
+  };
+}

@@ -30,7 +30,9 @@ CodeMirror.defineMode("hosts", function() {
       /* nothing found, continue */
       stream.next();
       return null;
-    }
+    },
+
+    lineComment: "#"
   };
 });
 

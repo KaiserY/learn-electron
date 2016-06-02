@@ -44,4 +44,5 @@ html > body {
 }
 .app-card > .mdl-card__supporting-text {
   height: calc(100% - 132px);
+  width: calc(100% - 32px);
 }
