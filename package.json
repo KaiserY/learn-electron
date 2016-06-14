@@ -12,8 +12,6 @@
     "dist": "npm run compile && build"
   },
   "build": {
-    "asar-unpack-dir": "node_modules/electron-sudo/**/*",
-    "prune": true,
     "download": {
       "mirror": "https://npm.taobao.org/mirrors/electron/",
       "strictSSL": false
@@ -38,10 +36,10 @@
     "cpr": "^1.1.2",
     "css-loader": "^0.23.1",
     "devtron": "^1.2.0",
-    "electron-builder": "^5.2.0",
+    "electron-builder": "^5.3.0",
     "electron-prebuilt": "^1.2.2",
     "file-loader": "^0.8.5",
-    "html-webpack-plugin": "^2.20.0",
+    "html-webpack-plugin": "^2.21.0",
     "rimraf": "^2.5.2",
     "style-loader": "^0.13.1",
     "typescript": "^1.8.10",
