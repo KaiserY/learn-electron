@@ -14,7 +14,6 @@
     "noLib": false,
     "preserveConstEnums": true,
     "suppressImplicitAnyIndexErrors": true,
-    "outDir": "app/out",
     "newLine": "LF",
     "sourceMap": true
   },
@@ -34,7 +33,6 @@
   },
   "files": [
     "src/entry.ts",
-    "src/main.ts",
     "src/renderer.ts",
     "typings/index.d.ts"
   ]
