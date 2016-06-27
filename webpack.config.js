@@ -43,6 +43,12 @@ module.exports = {
       whitelist: [
         'jquery',
         /^material-design/,
+        /@angular/,
+        /core-js/,
+        /zone.js/,
+        /rxjs/,
+        /reflect-metadata/,
+        /symbol-observable/,
         'codemirror'
       ]
     })
