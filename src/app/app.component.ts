@@ -23,14 +23,27 @@ var sudo = require('electron-sudo');
   ],
   templateUrl: './app.template.html'
 })
-export class App {
+export class AppComponent {
 
-  hostsPath: string = '/etc/hosts';
+  hostsPath: string = 'the hosts file path...';
   textarea: HTMLTextAreaElement;
   appCodeMirror: CodeMirror.EditorFromTextArea;
   sudoOptions = {
     name: 'test'
   };
+
+  icons = [
+    {
+      badge: "0",
+      name: "account_box"
+    }, {
+      badge: "1",
+      name: "account_box"
+    }, {
+      badge: "2",
+      name: "account_box"
+    }
+  ];
 
   ngOnInit() {
     this.textarea = <HTMLTextAreaElement>document.getElementById("app-editor");
@@ -43,8 +56,6 @@ export class App {
         this.hostsPath = '/etc/hosts';
         break;
     };
-
-    $('#app-card-title').text(this.hostsPath);
 
     fs.readFile(this.hostsPath, 'utf-8', (err, data) => {
       var text;
