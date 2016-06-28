@@ -72,7 +72,7 @@ export class AppComponent {
         tabSize: 8
       });
 
-      this.appCodeMirror.setValue(text);
+      this.appCodeMirror.getDoc().setValue(text);
       this.appCodeMirror.getDoc().clearHistory();
 
       this.appCodeMirror.setOption("extraKeys", {
@@ -85,15 +85,17 @@ export class AppComponent {
       });
     });
 
-    $('#app-card-save').click(() => {
-      var text = this.appCodeMirror.getValue();
-      this.saveHosts(text);
-    });
-
     console.log('Initial App');
-  }
+  };
+
+  onSave() {
+    var text = this.appCodeMirror.getValue();
+    this.saveHosts(text);
+  };
 
   saveHosts(hostsContent) {
+    hostsContent = hostsContent.replace(/^\s+|\s+$/g, "");
+    
     switch (os.platform()) {
       case 'win32':
         var tmpFile = process.env.temp + '\\tmp-hosts';
@@ -113,7 +115,7 @@ export class AppComponent {
         });
         break;
       case 'linux':
-        var cmd = 'bash -c \'echo "' + hostsContent + '" | tee ' + this.hostsPath + '\'';
+        var cmd = 'sh -c \'echo "' + hostsContent + '" > ' + this.hostsPath + '\'';
         sudo.exec(cmd, this.sudoOptions, (error) => {
           if (error) {
             console.error('sudo error: ' + error);
