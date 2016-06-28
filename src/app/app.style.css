@@ -1,5 +1,5 @@
-html > body {
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif!important;
+html> body {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 .CodeMirror {
   width: 100%;
@@ -11,38 +11,37 @@ html > body {
 .app-page-content {
   height: 100%;
 }
-.app-page-content > .mdl-grid {
+.app-page-content> .mdl-grid {
   height: calc(100% - 16px);
 }
-.app-page-content > .mdl-grid > .mdl-cell {
+.app-page-content> .mdl-grid> .mdl-cell {
   height: calc(100% - 16px);
 }
-.app-page-content > .mdl-grid > .mdl-cell > .app-card {
+.app-page-content> .mdl-grid> .mdl-cell> .app-card {
   height: 100%;
 }
 .app-card.mdl-card {
   width: 100%;
   height: 100%;
 }
-.app-card > .mdl-card__title {
+.app-card> .mdl-card__title {
   height: 50px;
   color: #fff;
   align-items: flex-start;
   background: #46B6AC;
 }
-.app-card > .mdl-card__actions {
+.app-card> .mdl-card__actions {
   display: flex;
   box-sizing: border-box;
   align-items: center;
   width: 100%;
   height: 50px;
   position: absolute;
-  bottom: 0px;
 }
-.app-card > .mdl-card__actions > .material-icons {
+.app-card> .mdl-card__actions> .material-icons {
   padding-right: 10px;
 }
-.app-card > .mdl-card__supporting-text {
+.app-card> .mdl-card__supporting-text {
   height: calc(100% - 132px);
   width: calc(100% - 32px);
 }

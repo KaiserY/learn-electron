@@ -17,8 +17,12 @@
     "newLine": "LF",
     "sourceMap": true
   },
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true,
+    "useWebpackText": true
+  },
   "filesGlob": [
-    "src/*.ts",
+    "src/**/*.ts",
     "typings/index.d.ts"
   ],
   "exclude": [
@@ -32,8 +36,12 @@
     "rewriteTsconfig": true
   },
   "files": [
+    "src/app/app.component.ts",
+    "src/app/index.ts",
     "src/entry.ts",
+    "src/polyfills.ts",
     "src/renderer.ts",
+    "src/vendor.ts",
     "typings/index.d.ts"
   ]
 }
