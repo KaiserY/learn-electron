@@ -93,17 +93,31 @@ export class AppComponent {
     this.saveHosts(text);
   };
 
-  saveHosts(hostsContent) {
+  saveHosts(hostsContent: String) {
     hostsContent = hostsContent.replace(/^\s+|\s+$/g, "");
-    
+
     switch (os.platform()) {
       case 'win32':
-        var tmpFile = process.env.temp + '\\tmp-hosts';
-        fs.writeFile(tmpFile, hostsContent, (error) => {
+        var content = "takeown /f " + this.hostsPath + "\r\n";
+
+        var lines = hostsContent.split(/\r?\n/);
+
+        for (var i = 0; i < lines.length; i++) {
+          if (i === 0) {
+            content += 'echo ' + lines[i] + ' > "' + this.hostsPath + '"\r\n';
+          } else if (lines[i] === '') {
+            content += 'echo[ >> "' + this.hostsPath + '"\r\n';
+          } else {
+            content += 'echo ' + lines[i] + ' >> "' + this.hostsPath + '"\r\n';
+          }
+        }
+
+        var tmpBatch = process.env.temp + '\\tmp.bat';
+        fs.writeFile(tmpBatch, content, (error) => {
           if (error) {
             console.error('sudo error: ' + error);
           } else {
-            var cmd = 'xcopy /s /y ' + tmpFile + ' ' + this.hostsPath;
+            var cmd = 'call "' + tmpBatch + '"';
             sudo.exec(cmd, this.sudoOptions, (error) => {
               if (error) {
                 console.error('sudo error: ' + error);

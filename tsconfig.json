@@ -39,8 +39,6 @@
     "src/app/app.component.ts",
     "src/app/index.ts",
     "src/entry.ts",
-    "src/polyfills.ts",
-    "src/renderer.ts",
     "src/vendor.ts",
     "typings/index.d.ts"
   ]

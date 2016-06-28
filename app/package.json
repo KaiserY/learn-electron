@@ -17,6 +17,6 @@
     },
     "homepage": "https://github.com/KaiserY/learn-electron#readme",
     "dependencies": {
-        "electron-sudo": "^3.0.6"
+        "electron-sudo": "^3.0.7"
     }
 }
