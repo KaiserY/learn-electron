@@ -30,16 +30,20 @@ export class HostsService {
         var lines = hostsContent.split(/\r?\n/);
 
         for (var i = 0; i < lines.length; i++) {
+          var action = ">>";
+
           if (i === 0) {
-            content += 'echo ' + lines[i] + ' > "' + this.hostsPath + '"\r\n';
-          } else if (lines[i] === '') {
-            content += 'echo[ >> "' + this.hostsPath + '"\r\n';
+            action = ">";
+          }
+
+          if (lines[i] === '') {
+            content += action + ' "' + this.hostsPath + '" echo[\r\n';
           } else {
-            content += 'echo ' + lines[i] + ' >> "' + this.hostsPath + '"\r\n';
+            content += action + ' "' + this.hostsPath + '" echo ' + lines[i] + '\r\n';
           }
         }
 
-        var tmpBatch = process.env.temp + '\\tmp.bat';
+        var tmpBatch = process.env.temp + '\\electron-hosts-' + Math.random() + '.bat';
         fs.writeFile(tmpBatch, content, (error) => {
           if (error) {
             console.error('sudo error: ' + error);
@@ -51,6 +55,13 @@ export class HostsService {
               } else {
                 console.log('sudo done!');
               }
+              fs.unlink(tmpBatch, (error) => {
+                if (error) {
+                  console.error('sudo error: ' + error);
+                } else {
+                  console.log('delete done!');
+                }
+              });
             });
           }
         });
