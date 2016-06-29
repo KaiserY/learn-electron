@@ -6,7 +6,7 @@ import * as CodeMirror from 'codemirror';
 
 @Component({
   selector: 'app',
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.Emulated,
   providers: [HostsService],
   styles: [
     String(require('../roboto.css')),

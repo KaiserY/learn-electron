@@ -45,18 +45,6 @@
           }
         }
 
-        // if (sol && stream.match(ipv4Regex, true)) {
-        //   return "number";
-        // }
-
-        // if (sol && stream.match(ipv6Regex, true)) {
-        //   return "keyword";
-        // }
-        //
-        // if (stream.match(hostnameRegex, true)) {
-        //   return "string";
-        // }
-
         /* nothing found, continue */
         stream.next();
         return null;

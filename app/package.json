@@ -1,6 +1,6 @@
 {
     "name": "learn-electron",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "A minimal Electron application",
     "main": "public/main.js",
     "repository": {
