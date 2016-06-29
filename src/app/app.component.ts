@@ -1,19 +1,13 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { HostsService } from './hosts.service';
 
 import * as fs from 'fs';
-import * as os from 'os';
 import * as CodeMirror from 'codemirror';
-import * as $ from 'jquery';
-
-import "../../node_modules/codemirror/addon/comment/comment.js";
-import "../js/codemirror-mode-hosts.js";
-import "../../node_modules/material-design-lite/material.min.js";
-
-var sudo = require('electron-sudo');
 
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
+  providers: [HostsService],
   styles: [
     String(require('../roboto.css')),
     String(require('../../node_modules/material-design-icons/iconfont/material-icons.css')),
@@ -28,9 +22,6 @@ export class AppComponent {
   hostsPath: string = 'the hosts file path...';
   textarea: HTMLTextAreaElement;
   appCodeMirror: CodeMirror.EditorFromTextArea;
-  sudoOptions = {
-    name: 'test'
-  };
 
   icons = [
     {
@@ -45,17 +36,12 @@ export class AppComponent {
     }
   ];
 
+  constructor(private heroService: HostsService) { }
+
   ngOnInit() {
     this.textarea = <HTMLTextAreaElement>document.getElementById("app-editor");
 
-    switch (os.platform()) {
-      case 'win32':
-        this.hostsPath = process.env.WINDIR + '\\System32\\drivers\\etc\\hosts';
-        break;
-      case 'linux':
-        this.hostsPath = '/etc/hosts';
-        break;
-    };
+    this.hostsPath = this.heroService.getHostsPath();
 
     fs.readFile(this.hostsPath, 'utf-8', (err, data) => {
       var text;
@@ -80,64 +66,20 @@ export class AppComponent {
           cm.toggleComment();
         },
         "Ctrl-S": (cm) => {
-          this.saveHosts(cm.getValue());
+          this.heroService.saveHosts(this.removeTrailingNewline(cm.getValue()));
         }
       });
     });
 
     console.log('Initial App');
-  };
+  }
 
   onSave() {
-    var text = this.appCodeMirror.getValue();
-    this.saveHosts(text);
-  };
+    var text = this.removeTrailingNewline(this.appCodeMirror.getValue());
+    this.heroService.saveHosts(text);
+  }
 
-  saveHosts(hostsContent: String) {
-    hostsContent = hostsContent.replace(/^\s+|\s+$/g, "");
-
-    switch (os.platform()) {
-      case 'win32':
-        var content = "takeown /f " + this.hostsPath + "\r\n";
-
-        var lines = hostsContent.split(/\r?\n/);
-
-        for (var i = 0; i < lines.length; i++) {
-          if (i === 0) {
-            content += 'echo ' + lines[i] + ' > "' + this.hostsPath + '"\r\n';
-          } else if (lines[i] === '') {
-            content += 'echo[ >> "' + this.hostsPath + '"\r\n';
-          } else {
-            content += 'echo ' + lines[i] + ' >> "' + this.hostsPath + '"\r\n';
-          }
-        }
-
-        var tmpBatch = process.env.temp + '\\tmp.bat';
-        fs.writeFile(tmpBatch, content, (error) => {
-          if (error) {
-            console.error('sudo error: ' + error);
-          } else {
-            var cmd = 'call "' + tmpBatch + '"';
-            sudo.exec(cmd, this.sudoOptions, (error) => {
-              if (error) {
-                console.error('sudo error: ' + error);
-              } else {
-                console.log('sudo done!');
-              }
-            });
-          }
-        });
-        break;
-      case 'linux':
-        var cmd = 'sh -c \'echo "' + hostsContent + '" > ' + this.hostsPath + '\'';
-        sudo.exec(cmd, this.sudoOptions, (error) => {
-          if (error) {
-            console.error('sudo error: ' + error);
-          } else {
-            console.log('sudo done!');
-          }
-        });
-        break;
-    };
+  removeTrailingNewline(content: string): string {
+    return content.replace(/^\s+|\s+$/g, "");
   }
 }

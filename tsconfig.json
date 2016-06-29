@@ -37,6 +37,7 @@
   },
   "files": [
     "src/app/app.component.ts",
+    "src/app/hosts.service.ts",
     "src/app/index.ts",
     "src/entry.ts",
     "src/vendor.ts",
